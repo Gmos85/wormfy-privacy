@@ -108,7 +108,7 @@
 <body>
 
   <header>
-    <!-- Logo do App (Puxando a imagem do dominio principal) -->
+    <!-- Logo do App -->
     <img src="https://gmos85.github.io/LOGO_CLARO.png" alt="Wormfy Logo" class="logo-img" onerror="this.onerror=null; this.src='LOGO_CLARO.png';">
 
     <!-- SELETOR DE IDIOMAS -->
@@ -281,12 +281,29 @@
   </footer>
 
   <script>
+    // Dicionário com os títulos da aba para cada idioma
+    const pageTitles = {
+      pt: "Política de Privacidade - Wormfy",
+      en: "Privacy Policy - Wormfy",
+      es: "Política de Privacidad - Wormfy",
+      ru: "Политика конфиденциальности - Wormfy",
+      ja: "プライバシーポリシー - Wormfy",
+      zh: "隐私政策 - Wormfy",
+      hi: "गोपनीयता नीति - Wormfy"
+    };
+
     function setLang(lang, btn) {
+      // 1. Esconde os blocos e tira o destaque dos botões
       document.querySelectorAll('.policy-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
       
+      // 2. Mostra o bloco do idioma e destaca o botão
       document.getElementById('content-' + lang).classList.add('active');
       btn.classList.add('active');
+
+      // 3. ATUALIZA A TAG TITLE (Nome da aba) E A LINGUAGEM HTML!
+      document.title = pageTitles[lang];
+      document.documentElement.lang = lang;
     }
   </script>
 </body>
