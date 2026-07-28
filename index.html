@@ -1,210 +1,291 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <title>Privacy Policy - Wormfy</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Política de Privacidade - Wormfy</title>
+  
+  <!-- Bandeiras Vetoriais -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
+
   <style>
-    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 2em; max-width: 800px; margin: 0 auto; color: #333; line-height: 1.6; }
-    .lang-selector { display: flex; gap: 8px; margin-bottom: 30px; flex-wrap: wrap; background: #f0f0f0; padding: 10px; border-radius: 8px; }
-    .lang-btn { padding: 8px 16px; cursor: pointer; border: 1px solid #ccc; background: #fff; border-radius: 4px; font-weight: bold; font-size: 14px; transition: all 0.2s; }
-    .lang-btn:hover { background: #e0e0e0; }
-    .lang-btn.active { background: #007bff; color: white; border-color: #007bff; }
+    :root {
+      --primary: #00D2D3;
+      --bg-dark: #06101E;
+      --card-bg: #0F2744;
+      --text-light: #F0F6FC;
+      --text-muted: #8B949E;
+      --border-color: #1F3A5F;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+      background-color: var(--bg-dark); 
+      color: var(--text-light); 
+      line-height: 1.6; 
+      min-height: 100vh;
+    }
+    
+    header { 
+      background: linear-gradient(180deg, #031E38 0%, var(--bg-dark) 100%); 
+      text-align: center; 
+      padding: 3rem 1rem 1.5rem 1rem; 
+    }
+    
+    .logo-img { 
+      max-width: 260px; 
+      height: auto; 
+      margin-bottom: 1rem; 
+      filter: drop-shadow(0px 4px 15px rgba(0,210,211,0.3)); 
+    }
+
+    .lang-selector { display: flex; justify-content: center; gap: 8px; margin: 1.5rem 0 0.5rem 0; flex-wrap: wrap; }
+    .lang-btn { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 6px; 
+      padding: 6px 14px; 
+      cursor: pointer; 
+      border: 1px solid var(--border-color); 
+      background: rgba(255,255,255,0.05); 
+      color: var(--text-light); 
+      border-radius: 20px; 
+      font-weight: bold; 
+      font-size: 13px; 
+      transition: all 0.3s ease; 
+    }
+    .lang-btn:hover { background: rgba(255,255,255,0.15); }
+    .lang-btn.active { background: var(--primary); color: #06101E; border-color: var(--primary); }
+    .lang-btn .fi { border-radius: 2px; font-size: 15px; }
+
+    main { max-width: 800px; margin: 1rem auto 3rem auto; padding: 0 1.5rem; }
+    
+    .card { 
+      background: var(--card-bg); 
+      border: 1px solid var(--border-color);
+      border-radius: 16px; 
+      padding: 2.5rem 2rem; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+      text-align: left; 
+    }
+    
     .policy-content { display: none; }
     .policy-content.active { display: block; }
-    ul { padding-left: 20px; }
-    li { margin-bottom: 5px; }
-    h2 { color: #111; border-bottom: 2px solid #eee; padding-bottom: 8px; }
-    h3 { color: #444; margin-top: 25px; }
+
+    .btn-back { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 8px; 
+      background-color: transparent; 
+      color: var(--text-light); 
+      border: 1px solid var(--border-color); 
+      text-decoration: none; 
+      padding: 8px 18px; 
+      border-radius: 20px; 
+      font-weight: bold; 
+      font-size: 0.9rem; 
+      margin-bottom: 2rem; 
+      transition: all 0.3s ease; 
+    }
+    .btn-back:hover { 
+      background-color: rgba(255,255,255,0.1); 
+      border-color: var(--primary); 
+      color: var(--primary); 
+    }
+
+    h2 { color: var(--primary); font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+    h3 { color: var(--text-light); margin-top: 1.8rem; margin-bottom: 0.5rem; font-size: 1.2rem; }
+    p { color: var(--text-muted); margin-bottom: 1rem; font-size: 1rem; }
+    ul { padding-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-muted); }
+    li { margin-bottom: 0.5rem; }
+    a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    a:hover { text-decoration: underline; }
+
+    footer { text-align: center; padding: 2rem; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border-color); }
   </style>
 </head>
 <body>
 
-  <!-- SELETOR DE IDIOMAS INTERATIVO -->
-  <div class="lang-selector">
-    <button class="lang-btn active" onclick="setLang('pt', this)">PT</button>
-    <button class="lang-btn" onclick="setLang('en', this)">EN</button>
-    <button class="lang-btn" onclick="setLang('es', this)">ES</button>
-    <button class="lang-btn" onclick="setLang('ru', this)">RU</button>
-    <button class="lang-btn" onclick="setLang('ja', this)">JA</button>
-    <button class="lang-btn" onclick="setLang('zh', this)">ZH</button>
-    <button class="lang-btn" onclick="setLang('hi', this)">HI</button>
-  </div>
+  <header>
+    <!-- Logo do App (Puxando a imagem do dominio principal) -->
+    <img src="https://gmos85.github.io/LOGO_CLARO.png" alt="Wormfy Logo" class="logo-img" onerror="this.onerror=null; this.src='LOGO_CLARO.png';">
 
-  <!-- ================= PORTUGUÊS (PT) ================= -->
-  <div id="content-pt" class="policy-content active">
-    <h2>Política de Privacidade - Wormfy</h2>
-    <p>Esta política de privacidade aplica-se ao aplicativo Wormfy, criado como um aplicativo gratuito (Free).</p>
-    <h3>1. Coleta e Uso de Informações</h3>
-    <p>O Aplicativo é executado localmente. No entanto, para fornecer anúncios e melhorias de desempenho, o aplicativo utiliza serviços de terceiros que podem coletar informações usadas para identificar você:</p>
-    <ul>
-      <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
-      <li><a href="https://support.google.com/admob/answer/6128543?hl=pt-BR" target="_blank">AdMob</a></li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank">Google Analytics for Firebase</a></li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Crashlytics</a></li>
-    </ul>
-    <h3>1.1 Acesso à Câmera e Fotos</h3>
-    <p>O aplicativo solicita acesso à câmera e à galeria de fotos para permitir que você tire ou selecione uma selfie para compartilhar suas conquistas de hidratação. Essas fotos são processadas localmente no seu dispositivo e não são armazenadas ou compartilhadas por nós sem a sua ação explícita.</p>
-    <h3>2. Dados de Log e Cookies</h3>
-    <p>Em caso de erro no sistema, dados de log são coletados via Firebase Crashlytics para correção de bugs. A AdMob pode usar cookies para veicular anúncios personalizados relevantes ao seu perfil.</p>
-    <h3>3. Exclusão de Dados</h3>
-    <p>Como o Wormfy armazena dados localmente, você pode excluir suas informações acessando as configurações do seu dispositivo > Aplicativos > Wormfy > Armazenamento > Limpar dados. Alternativamente, desinstalar o aplicativo removerá todos os dados armazenados.</p>
-    <h3>4. Privacidade das Crianças</h3>
-    <p>Este aplicativo não coleta conscientemente informações de identificação pessoal de crianças menores de 13 anos.</p>
-    <h3>5. Contato</h3>
-    <p>Se você tiver dúvidas, entre em contato através do e-mail de suporte cadastrado na Google Play Store.</p>
-  </div>
+    <!-- SELETOR DE IDIOMAS -->
+    <div class="lang-selector">
+      <button class="lang-btn active" onclick="setLang('pt', this)"><span class="fi fi-br"></span> PT</button>
+      <button class="lang-btn" onclick="setLang('en', this)"><span class="fi fi-us"></span> EN</button>
+      <button class="lang-btn" onclick="setLang('es', this)"><span class="fi fi-es"></span> ES</button>
+      <button class="lang-btn" onclick="setLang('ru', this)"><span class="fi fi-ru"></span> RU</button>
+      <button class="lang-btn" onclick="setLang('ja', this)"><span class="fi fi-jp"></span> JA</button>
+      <button class="lang-btn" onclick="setLang('zh', this)"><span class="fi fi-cn"></span> ZH</button>
+      <button class="lang-btn" onclick="setLang('hi', this)"><span class="fi fi-in"></span> HI</button>
+    </div>
+  </header>
 
-  <!-- ================= ENGLISH (EN) ================= -->
-  <div id="content-en" class="policy-content">
-    <h2>Privacy Policy - Wormfy</h2>
-    <p>This privacy policy applies to the Wormfy app, built as a Free app.</p>
-    <h3>1. Information Collection and Use</h3>
-    <p>The Application runs locally. However, to provide advertisements and performance improvements, the app uses third-party services that may collect information used to identify you:</p>
-    <ul>
-      <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
-      <li><a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob</a></li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank">Google Analytics for Firebase</a></li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Crashlytics</a></li>
-    </ul>
-    <h3>1.1 Camera and Photo Access</h3>
-    <p>The app requests access to your camera and photo gallery to allow you to take or select a selfie for sharing your hydration achievements. These photos are processed locally on your device and are not stored or shared by us without your explicit action.</p>
-    <h3>2. Log Data and Cookies</h3>
-    <p>In case of a system error, log data is collected via Firebase Crashlytics for bug fixing. AdMob may use cookies to serve personalized ads relevant to your profile.</p>
-    <h3>3. Data Deletion</h3>
-    <p>As Wormfy stores data locally, you can delete your information by accessing your device settings > Apps > Wormfy > Storage > Clear data. Alternatively, uninstalling the app will remove all stored data.</p>
-    <h3>4. Children's Privacy</h3>
-    <p>This application does not knowingly collect personally identifiable information from children under 13.</p>
-    <h3>5. Contact Us</h3>
-    <p>If you have any questions, contact us via the support email registered on the Google Play Store.</p>
-  </div>
+  <main>
+    <div class="card">
 
-  <!-- ================= ESPAÑOL (ES) ================= -->
-  <div id="content-es" class="policy-content">
-    <h2>Política de Privacidad - Wormfy</h2>
-    <p>Esta política de privacidad se aplica a la aplicación Wormfy, creada como una aplicación gratuita.</p>
-    <h3>1. Recopilación y uso de información</h3>
-    <p>La Aplicación se ejecuta localmente. Sin embargo, para proporcionar anuncios y mejoras de rendimiento, la app utiliza servicios de terceros que pueden recopilar información utilizada para identificarlo:</p>
-    <ul>
-      <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
-      <li><a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob</a></li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank">Google Analytics for Firebase</a></li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Crashlytics</a></li>
-    </ul>
-    <h3>1.1 Acceso a la cámara y fotos</h3>
-    <p>La aplicación solicita acceso a la cámara y a la galería de fotos para permitirle tomar o seleccionar una selfie para compartir sus logros de hidratación. Estas fotos se procesan localmente en su dispositivo y no son almacenadas ni compartidas por nosotros sin su acción explícita.</p>
-    <h3>2. Datos de registro y Cookies</h3>
-    <p>En caso de error del sistema, se recopilan datos de registro a través de Firebase Crashlytics. AdMob puede utilizar cookies para mostrar anuncios personalizados relevantes para su perfil.</p>
-    <h3>3. Eliminación de datos</h3>
-    <p>Dado que Wormfy almacena datos localmente, puede eliminar su información accediendo a la configuración de su dispositivo > Aplicaciones > Wormfy > Almacenamiento > Borrar datos. Alternativamente, desinstalar la aplicación eliminará todos los datos almacenados.</p>
-    <h3>4. Privacidad de los niños</h3>
-    <p>Esta aplicación no recopila a sabiendas información de identificación personal de niños menores de 13 años.</p>
-    <h3>5. Contáctenos</h3>
-    <p>Si tiene alguna pregunta, contáctenos a través del correo electrónico de soporte registrado en Google Play Store.</p>
-  </div>
+      <!-- ================= PORTUGUÊS (PT) ================= -->
+      <div id="content-pt" class="policy-content active">
+        <a href="https://gmos85.github.io/" class="btn-back">← Voltar para a Página Principal</a>
+        <h2>Política de Privacidade - Wormfy</h2>
+        <p>Esta política de privacidade aplica-se ao aplicativo Wormfy, criado como um aplicativo gratuito (Free).</p>
+        <h3>1. Coleta e Uso de Informações</h3>
+        <p>O Aplicativo é executado localmente. No entanto, para fornecer anúncios e melhorias de desempenho, o aplicativo utiliza serviços de terceiros que podem coletar informações usadas para identificar você:</p>
+        <ul>
+          <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
+          <li><a href="https://support.google.com/admob/answer/6128543?hl=pt" target="_blank">AdMob</a></li>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank">Google Analytics for Firebase</a></li>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Crashlytics</a></li>
+        </ul>
+        <h3>2. Dados de Log e Cookies</h3>
+        <p>Em caso de erro no sistema, dados de log são coletados via Firebase Crashlytics para correção de bugs. A AdMob pode usar cookies para veicular anúncios personalizados relevantes ao seu perfil.</p>
+        <h3>3. Privacidade das Crianças</h3>
+        <p>Este aplicativo não coleta conscientemente informações de identificação pessoal de crianças menores de 13 anos.</p>
+        <h3>4. Contato</h3>
+        <p>Se você tiver dúvidas, entre em contato através do e-mail de suporte cadastrado na Google Play Store.</p>
+      </div>
 
-  <!-- ================= RUSSIAN (RU) ================= -->
-  <div id="content-ru" class="policy-content">
-    <h2>Политика конфиденциальности - Wormfy</h2>
-    <p>Эта политика конфиденциальности применяется к приложению Wormfy, созданному как бесплатное приложение.</p>
-    <h3>1. Сбор и использование информации</h3>
-    <p>Приложение работает локально. Однако для показа рекламы и улучшения производительности оно использует сторонние сервисы, которые могут собирать информацию, используемую для вашей идентификации:</p>
-    <ul>
-      <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
-      <li><a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob</a></li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank">Google Analytics for Firebase</a></li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Crashlytics</a></li>
-    </ul>
-    <h3>1.1 Доступ к камере и фотографиям</h3>
-    <p>Приложение запрашивает доступ к камере и фотогалерее, чтобы вы могли сделать или выбрать селфи для публикации своих достижений по гидратации. Эти фотографии обрабатываются локально на вашем устройстве и не сохраняются и не передаются нами без вашего явного действия.</p>
-    <h3>2. Данные журнала и файлы cookie</h3>
-    <p>В случае системной ошибки данные журнала собираются через Firebase Crashlytics. AdMob может использовать файлы cookie для показа персонализированной рекламы.</p>
-    <h3>3. Удаление данных</h3>
-    <p>Поскольку Wormfy хранит данные локально, вы можете удалить свою информацию, зайдя в настройки устройства > Приложения > Wormfy > Хранилище > Очистить данные. Альтернативно, удаление приложения приведет к удалению всех сохраненных данных.</p>
-    <h3>4. Конфиденциальность детей</h3>
-    <p>Это приложение преднамеренно не собирает личную информацию от детей младше 13 лет.</p>
-    <h3>5. Контакты</h3>
-    <p>Если у вас есть вопросы, свяжитесь с нами по электронной почте поддержки, зарегистрированной в Google Play Store.</p>
-  </div>
+      <!-- ================= ENGLISH (EN) ================= -->
+      <div id="content-en" class="policy-content">
+        <a href="https://gmos85.github.io/" class="btn-back">← Back to Main Page</a>
+        <h2>Privacy Policy - Wormfy</h2>
+        <p>This privacy policy applies to the Wormfy app, built as a Free app.</p>
+        <h3>1. Information Collection and Use</h3>
+        <p>The Application runs locally. However, to provide advertisements and performance improvements, the app uses third-party services that may collect information used to identify you:</p>
+        <ul>
+          <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
+          <li><a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob</a></li>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank">Google Analytics for Firebase</a></li>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Crashlytics</a></li>
+        </ul>
+        <h3>2. Log Data and Cookies</h3>
+        <p>In case of a system error, log data is collected via Firebase Crashlytics for bug fixing. AdMob may use cookies to serve personalized ads relevant to your profile.</p>
+        <h3>3. Children's Privacy</h3>
+        <p>This application does not knowingly collect personally identifiable information from children under 13.</p>
+        <h3>4. Contact Us</h3>
+        <p>If you have any questions, contact us via the support email registered on the Google Play Store.</p>
+      </div>
 
-  <!-- ================= JAPANESE (JA) ================= -->
-  <div id="content-ja" class="policy-content">
-    <h2>プライバシーポリシー - Wormfy</h2>
-    <p>このプライバシーポリシーは、無料アプリとして提供されるWormfyアプリに適用されます。</p>
-    <h3>1. 情報の収集と利用</h3>
-    <p>本アプリはローカルで動作します。ただし、広告の配信やパフォーマンス向上のため、ユーザーを識別する情報を収集する可能性のある以下のサードパーティサービスを使用しています：</p>
-    <ul>
-      <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
-      <li><a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob</a></li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank">Google Analytics for Firebase</a></li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Crashlytics</a></li>
-    </ul>
-    <h3>1.1 カメラと写真へのアクセス</h3>
-    <p>本アプリは、水分補給の成果を共有するために、カメラや写真ギャラリーにアクセスしてセルフィーを撮影または選択できるようにします。これらの写真はデバイス上でローカルに処理され、明示的な操作なしに当社が保存または共有することはありません。</p>
-    <h3>2. ログデータとクッキー</h3>
-    <p>アプリでエラーが発生した場合、修正のためにFirebase Crashlytics経由でログデータが収集されます。また、AdMobはパーソナライズ広告を表示するためにクッキーを使用することがあります。</p>
-    <h3>3. データの削除</h3>
-    <p>Wormfyはデータをローカルに保存するため、デバイスの設定 > アプリ > Wormfy > ストレージ > データの消去にアクセスすることで、情報を削除できます。または、アプリをアンインストールすることで、すべての保存データが削除されます。</p>
-    <h3>4. 子どものプライバシー</h3>
-    <p>本アプリは、13歳未満の子どもから故意に個人特定情報を収集することはありません。</p>
-    <h3>5. お問い合わせ</h3>
-    <p>ご不明な点がございましたら、Google Playストアに登録されているサポートメールまでご連絡ください。</p>
-  </div>
+      <!-- ================= ESPAÑOL (ES) ================= -->
+      <div id="content-es" class="policy-content">
+        <a href="https://gmos85.github.io/" class="btn-back">← Volver a la Página Principal</a>
+        <h2>Política de Privacidad - Wormfy</h2>
+        <p>Esta política de privacidad se aplica a la aplicación Wormfy, creada como una aplicación gratuita.</p>
+        <h3>1. Recopilación y uso de información</h3>
+        <p>La Aplicación se ejecuta localmente. Sin embargo, para proporcionar anuncios y mejoras de rendimiento, la app utiliza servicios de terceros que pueden recopilar información utilizada para identificarlo:</p>
+        <ul>
+          <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
+          <li><a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob</a></li>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank">Google Analytics for Firebase</a></li>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Crashlytics</a></li>
+        </ul>
+        <h3>2. Datos de registro y Cookies</h3>
+        <p>En caso de error del sistema, se recopilan datos de registro a través de Firebase Crashlytics. AdMob puede utilizar cookies para mostrar anuncios personalizados relevantes para su perfil.</p>
+        <h3>3. Privacidad de los niños</h3>
+        <p>Esta aplicación no recopila a sabiendas información de identificación personal de niños menores de 13 años.</p>
+        <h3>4. Contáctenos</h3>
+        <p>Si tiene alguna pregunta, contáctenos a través del correo electrónico de soporte registrado en Google Play Store.</p>
+      </div>
 
-  <!-- ================= CHINESE (ZH) ================= -->
-  <div id="content-zh" class="policy-content">
-    <h2>隐私政策 - Wormfy</h2>
-    <p>本隐私政策适用于作为免费应用开发的 Wormfy 应用程序。</p>
-    <h3>1. 信息收集与使用</h3>
-    <p>本应用在本地运行。然而，为了投放广告和优化性能，应用使用了可能收集用于识别您身份的信息的第三方服务：</p>
-    <ul>
-      <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
-      <li><a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob</a></li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank">Google Analytics for Firebase</a></li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Crashlytics</a></li>
-    </ul>
-    <h3>1.1 相机和照片访问</h3>
-    <p>本应用会访问您的相机和相册，以便您拍摄或选择自拍来分享您的补水成果。这些照片在您的设备上进行本地处理，除非您主动操作，否则我们不会存储或共享这些照片。</p>
-    <h3>2. 日志数据与 Cookie</h3>
-    <p>发生系统错误时，将通过 Firebase Crashlytics 收集日志数据以修复漏洞。AdMob 可能会使用 Cookie 来投放与您相关的个性化广告。</p>
-    <h3>3. 数据删除</h3>
-    <p>由于 Wormfy 在本地存储数据，您可以通过访问设备设置 > 应用程序 > Wormfy > 存储 > 清除数据来删除您的信息。或者，卸载该应用程序将删除所有已存储的数据。</p>
-    <h3>4. 儿童隐私</h3>
-    <p>本应用不会故意收集 13 岁以下儿童的个人身份信息。</p>
-    <h3>5. 联系我们</h3>
-    <p>如有任何疑问，请通过 Google Play 商店中注册的支持电子邮箱与我们联系。</p>
-  </div>
+      <!-- ================= RUSSIAN (RU) ================= -->
+      <div id="content-ru" class="policy-content">
+        <a href="https://gmos85.github.io/" class="btn-back">← На главную страницу</a>
+        <h2>Политика конфиденциальности - Wormfy</h2>
+        <p>Эта политика конфиденциальности применяется к приложению Wormfy, созданному как бесплатное приложение.</p>
+        <h3>1. Сбор и использование информации</h3>
+        <p>Приложение работает локально. Однако для показа рекламы и улучшения производительности оно использует сторонние сервисы, которые могут собирать информацию, используемую для вашей идентификации:</p>
+        <ul>
+          <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
+          <li><a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob</a></li>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank">Google Analytics for Firebase</a></li>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Crashlytics</a></li>
+        </ul>
+        <h3>2. Данные журнала и файлы cookie</h3>
+        <p>В случае системной ошибки данные журнала собираются через Firebase Crashlytics. AdMob может использовать файлы cookie для показа персонализированной рекламы.</p>
+        <h3>3. Конфиденциальность детей</h3>
+        <p>Это приложение преднамеренно не собирает личную информацию от детей младше 13 лет.</p>
+        <h3>4. Контакты</h3>
+        <p>Если у вас есть вопросы, свяжитесь с нами по электронной почте поддержки, зарегистрированной в Google Play Store.</p>
+      </div>
 
-  <!-- ================= HINDI (HI) ================= -->
-  <div id="content-hi" class="policy-content">
-    <h2>गोपनीयता नीति - Wormfy</h2>
-    <p>यह गोपनीयता नीति Wormfy ऐप पर लागू होती है, जिसे एक निःशुल्क (Free) ऐप के रूप में बनाया गया है।</p>
-    <h3>1. सूचना संग्रह और उपयोग</h3>
-    <p>यह एप्लिकेशन स्थानीय रूप से काम करता है। हालांकि, विज्ञापन और प्रदर्शन में सुधार के लिए, ऐप तृतीय-पक्ष सेवाओं का उपयोग करता है जो आपकी पहचान करने के लिए जानकारी एकत्र कर सकती हैं:</p>
-    <ul>
-      <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
-      <li><a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob</a></li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank">Google Analytics for Firebase</a></li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Crashlytics</a></li>
-    </ul>
-    <h3>1.1 कैमरा और फोटो एक्सेस</h3>
-    <p>ऐप आपकी हाइड्रेशन उपलब्धियों को साझा करने के लिए सेल्फी लेने या चुनने की अनुमति देने के लिए कैमरे और फोटो गैलरी तक पहुंचता है। ये तस्वीरें आपके डिवाइस पर स्थानीय रूप से प्रोसेस की जाती हैं और आपकी स्पष्ट कार्रवाई के बिना हमारे द्वारा संग्रहीत या साझा नहीं की जाती हैं।</p>
-    <h3>2. लॉग डेटा और कुकीज़</h3>
-    <p>सिस्टम त्रुटि के मामले में, बग फिक्सिंग के लिए Firebase Crashlytics के माध्यम से लॉग डेटा एकत्र किया जाता है। AdMob आपकी प्रोफ़ाइल के प्रासंगिक व्यक्तिगत विज्ञापन दिखाने के लिए कुकीज़ का उपयोग कर सकता है।</p>
-    <h3>3. डेटा विलोपन (Data Deletion)</h3>
-    <p>चूंकि Wormfy डेटा को स्थानीय रूप से संग्रहीत करता है, इसलिए आप अपने डिवाइस की सेटिंग्स > ऐप्स > Wormfy > स्टोरेज > डेटा साफ़ करें (Clear data) पर जाकर अपनी जानकारी हटा सकते हैं। इसके अतिरिक्त, ऐप को अनइंस्टॉल करने से सारा संग्रहीत डेटा हट जाएगा।</p>
-    <h3>4. बच्चों की गोपनीयता</h3>
-    <p>यह एप्लिकेशन जानबूझकर 13 वर्ष से कम उम्र के बच्चों से व्यक्तिगत पहचान योग्य जानकारी एकत्र नहीं करता है.</p>
-    <h3>5. संपर्क करें</h3>
-    <p>यदि आपके कोई प्रश्न हैं, तो Google Play Store पर पंजीकृत सहायता ईमेल के माध्यम से हमसे संपर्क करें।</p>
-  </div>
+      <!-- ================= JAPANESE (JA) ================= -->
+      <div id="content-ja" class="policy-content">
+        <a href="https://gmos85.github.io/" class="btn-back">← メインページに戻る</a>
+        <h2>プライバシーポリシー - Wormfy</h2>
+        <p>このプライバシーポリシーは、無料アプリとして提供されるWormfyアプリに適用されます。</p>
+        <h3>1. 情報の収集と利用</h3>
+        <p>本アプリはローカルで動作します。ただし、広告の配信やパフォーマンス向上のため、ユーザーを識別する情報を収集する可能性のある以下のサードパーティサービスを使用しています：</p>
+        <ul>
+          <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
+          <li><a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob</a></li>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank">Google Analytics for Firebase</a></li>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Crashlytics</a></li>
+        </ul>
+        <h3>2. ログデータとクッキー</h3>
+        <p>アプリでエラーが発生した場合、修正のためにFirebase Crashlytics経由でログデータが収集されます。また、AdMobはパーソナライズ広告を表示するためにクッキーを使用することがあります。</p>
+        <h3>3. 子どものプライバシー</h3>
+        <p>本アプリは、13歳未満の子どもから故意に個人特定情報を収集することはありません。</p>
+        <h3>4. お問い合わせ</h3>
+        <p>ご不明な点がございましたら、Google Playストアに登録されているサポートメールまでご連絡ください。</p>
+      </div>
 
-  <!-- LÓGICA JAVASCRIPT PARA ALTERNAR IDIOMAS -->
+      <!-- ================= CHINESE (ZH) ================= -->
+      <div id="content-zh" class="policy-content">
+        <a href="https://gmos85.github.io/" class="btn-back">← 返回首页</a>
+        <h2>隐私政策 - Wormfy</h2>
+        <p>本隐私政策适用于作为免费应用开发的 Wormfy 应用程序。</p>
+        <h3>1. 信息收集与使用</h3>
+        <p>本应用在本地运行。然而，为了投放广告和优化性能，应用使用了可能收集用于识别您身份的信息的第三方服务：</p>
+        <ul>
+          <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
+          <li><a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob</a></li>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank">Google Analytics for Firebase</a></li>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Crashlytics</a></li>
+        </ul>
+        <h3>2. 日志数据与 Cookie</h3>
+        <p>发生系统错误时，将通过 Firebase Crashlytics 收集日志数据以修复漏洞。AdMob 可能会使用 Cookie 来投放与您相关的个性化广告。</p>
+        <h3>3. 儿童隐私</h3>
+        <p>本应用不会故意收集 13 岁以下儿童的个人身份信息。</p>
+        <h3>4. 联系我们</h3>
+        <p>如有任何疑问，请通过 Google Play 商店中注册的支持电子邮箱与我们联系。</p>
+      </div>
+
+      <!-- ================= HINDI (HI) ================= -->
+      <div id="content-hi" class="policy-content">
+        <a href="https://gmos85.github.io/" class="btn-back">← मुख्य पृष्ठ पर वापस जाएं</a>
+        <h2>गोपनीयता नीति - Wormfy</h2>
+        <p>यह गोपनीयता नीति Wormfy ऐप पर लागू होती है, जिसे एक निःशुल्क (Free) ऐप के रूप में बनाया गया है।</p>
+        <h3>1. सूचना संग्रह और उपयोग</h3>
+        <p>यह एप्लिकेशन स्थानीय रूप से काम करता है। हालांकि, विज्ञापन और प्रदर्शन में सुधार के लिए, ऐप तृतीय-पक्ष सेवाओं का उपयोग करता है जो आपकी पहचान करने के लिए जानकारी एकत्र कर सकती हैं:</p>
+        <ul>
+          <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
+          <li><a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob</a></li>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank">Google Analytics for Firebase</a></li>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Crashlytics</a></li>
+        </ul>
+        <h3>2. लॉग डेटा और कुकीज़</h3>
+        <p>सिस्टम त्रुटि के मामले में, बग फिक्सिंग के लिए Firebase Crashlytics के माध्यम से लॉग डेटा एकत्र किया जाता है। AdMob आपकी प्रोफ़ाइल के प्रासंगिक व्यक्तिगत विज्ञापन दिखाने के लिए कुकीज़ का उपयोग कर सकता है।</p>
+        <h3>3. बच्चों की गोपनीयता</h3>
+        <p>यह एप्लिकेशन जानबूझकर 13 वर्ष से कम उम्र के बच्चों से व्यक्तिगत पहचान योग्य जानकारी एकत्र नहीं करता है.</p>
+        <h3>4. संपर्क करें</h3>
+        <p>यदि आपके कोई प्रश्न हैं, तो Google Play Store पर पंजीकृत सहायता ईमेल के माध्यम से हमसे संपर्क करें।</p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Wormfy. All rights reserved.</p>
+  </footer>
+
   <script>
     function setLang(lang, btn) {
-      document.querySelectorAll('.policy-content').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.policy-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
-      document.getElementById('content-' + lang).style.display = 'block';
+      
+      document.getElementById('content-' + lang).classList.add('active');
       btn.classList.add('active');
     }
   </script>
